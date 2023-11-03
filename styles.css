@@ -1,0 +1,72 @@
+body {
+  font-family: "Arial", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: #333;
+  padding: 10px 0;
+}
+
+nav {
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  padding: 5px 15px;
+}
+
+nav a.active {
+  background-color: #555;
+  border-radius: 5px;
+}
+
+main .intro {
+  text-align: center;
+  padding: 50px 0;
+}
+
+footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+main .intro div {
+  margin: 20px 0;
+}
+
+main .intro input {
+  padding: 10px;
+  margin: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 40%;
+}
+
+main .intro button {
+  padding: 10px 20px;
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#locateMe {
+  background-color: rgba(222, 209, 209, 0.492);
+}
+main .intro button:hover {
+  background-color: #555;
+}
