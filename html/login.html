@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Login - TowRide</title>
+		<link rel="stylesheet" href="../CSS/styles.css" />
+	</head>
+	<body>
+		<header>
+			<nav>
+				<a href="index.html">Home Page</a>
+				<a href="services.html">Our service</a>
+				<a href="pricing.html">Price</a>
+				<a href="faq.html">FAQ</a>
+				<a href="contact.html">Contact Us</a>
+				<a href="login.html" class="active">Login</a>
+			</nav>
+		</header>
+		<main>
+			<section class="intro">
+				<div id="loginForm">
+					<h1>Login</h1>
+					<form action="/submit-login" method="post">
+						<div>
+							<label for="uname"><b>Username</b></label>
+							<input
+								type="text"
+								placeholder="Enter Username"
+								name="uname"
+								required
+							/>
+						</div>
+
+						<div>
+							<label for="psw"><b>Password</b></label>
+							<input
+								type="password"
+								placeholder="Enter Password"
+								name="psw"
+								required
+							/>
+						</div>
+
+						<div id="submitContainer">
+							<button type="submit">Login</button>
+						</div>
+					</form>
+				</div>
+
+				<h1>Or</h1>
+				<button id="toggleRegisterForm">Register</button>
+
+				<!-- Registration Form, Initially Hidden -->
+				<div id="registerForm" style="display: none">
+					<h1>Register</h1>
+					<form action="/submit-registration" method="post">
+						<div>
+							<label for="new_uname"><b>New Username</b></label>
+							<input
+								type="text"
+								placeholder="New Username"
+								name="new_uname"
+								required
+							/>
+						</div>
+
+						<div>
+							<label for="new_psw"><b>Password</b></label>
+							<input
+								type="password"
+								placeholder="New Password"
+								name="new_psw"
+								required
+							/>
+						</div>
+						<div>
+							<label for="email"><b>Email</b></label>
+							<input
+								type="email"
+								placeholder="Email"
+								name="new_email"
+								required
+							/>
+						</div>
+
+						<div id="submitContainer">
+							<button type="submit">Register</button>
+						</div>
+					</form>
+				</div>
+			</section>
+		</main>
+		<footer>
+			<p>&copy; 2023 TowRide. All rights reserved.</p>
+		</footer>
+		<script>
+			document
+				.getElementById("toggleRegisterForm")
+				.addEventListener("click", function () {
+					var loginForm = document.getElementById("loginForm");
+					var registerForm = document.getElementById("registerForm");
+
+					if (loginForm.style.display === "none") {
+						loginForm.style.display = "block";
+						registerForm.style.display = "none";
+						this.textContent = "Register"; // Change button text to 'Register'
+					} else {
+						loginForm.style.display = "none";
+						registerForm.style.display = "block";
+						this.textContent = "Login"; // Change button text to 'Login'
+					}
+				});
+		</script>
+	</body>
+</html>
