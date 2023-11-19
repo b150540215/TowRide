@@ -6,7 +6,7 @@ const { Client } = require("pg");
 
 const client = new Client({
 	connectionString:
-		"postgres://towrideuser:9NmWDkSXwqB5LNQSVM2iXq9D5xbNM6uN@dpg-cld3vmeg1b2c73f3qbe0-a/towridedb?sslmode=require",
+		"postgres://towrideuser:9NmWDkSXwqB5LNQSVM2iXq9D5xbNM6uN@dpg-cld3vmeg1b2c73f3qbe0-a/towridedb",
 });
 
 client.connect((err) => {
@@ -19,7 +19,7 @@ client.connect((err) => {
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Serve static files from the root directory
-app.use(express.static(path.join(__dirname, "HTML")));
+app.use(express.static(path.join(__dirname, "html")));
 
 app.use("/CSS", express.static(path.join(__dirname, "CSS")));
 
