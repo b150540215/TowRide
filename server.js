@@ -2,16 +2,20 @@ const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 const path = require("path");
-const { Pool } = require("pg");
+const { Client } = require("pg");
 
-const pool = new Pool({
-	user: "TowRideDB",
-	host: "database-1.cttspqpwh5sj.us-east-2.rds.amazonaws.com",
-	database: "postgres",
-	password: "bmtg020822",
-	port: 5432,
+const client = new Client({
+	connectionString:
+		"postgres://towrideuser:9NmWDkSXwqB5LNQSVM2iXq9D5xbNM6uN@postgres://towrideuser:9NmWDkSXwqB5LNQSVM2iXq9D5xbNM6uN@dpg-cld3vmeg1b2c73f3qbe0-a/towridedb:5432/towridedb",
 });
 
+client.connect((err) => {
+	if (err) {
+		console.error("Failed to connect to the database!", err.stack);
+	} else {
+		console.log("Successfully connected to the database.");
+	}
+});
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Serve static files from the root directory
