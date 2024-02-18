@@ -7,11 +7,11 @@ const { Pool } = require("pg");
 const nodemailer = require("nodemailer");
 const multer = require("multer");
 const upload = multer();
-
+require("dotenv").config();
 const pool = new Pool({
 	connectionString: process.env.DATABASE_URL,
 	ssl: {
-		rejectUnauthorized: false, // This is important for Heroku's free PostgreSQL plan to accept the connection
+		rejectUnauthorized: true,
 	},
 });
 
@@ -124,6 +124,7 @@ function generateVerificationToken() {
 	return Math.floor(100000 + Math.random() * 900000);
 }
 
-app.listen(3000, function () {
-	console.log("Server is running on port 3000");
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+	console.log(`Server is running on port ${PORT}`);
 });
