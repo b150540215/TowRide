@@ -9,8 +9,10 @@ const multer = require("multer");
 const upload = multer();
 
 const pool = new Pool({
-	connectionString:
-		"postgres://towrideuser:9NmWDkSXwqB5LNQSVM2iXq9D5xbNM6uN@dpg-cld3vmeg1b2c73f3qbe0-a/towridedb",
+	connectionString: process.env.DATABASE_URL,
+	ssl: {
+		rejectUnauthorized: false, // This is important for Heroku's free PostgreSQL plan to accept the connection
+	},
 });
 
 pool.connect((err) => {
