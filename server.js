@@ -22,8 +22,8 @@ pool.connect((err) => {
 		console.log("Successfully connected to the database.");
 	}
 });
-app.use(bodyParser.urlencoded({ extended: true }));
 
+app.use(bodyParser.urlencoded({ extended: true }));
 // Serve static files from the root directory
 app.use(express.static(path.join(__dirname, "html")));
 
