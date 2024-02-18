@@ -23,6 +23,7 @@ pool.connect((err) => {
 	}
 });
 
+app.use(bodyParser.urlencoded({ extended: true }));
 // Serve static files from the root directory
 app.use(express.static(path.join(__dirname, "html")));
 
