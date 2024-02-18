@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Order Dashboard</title>
+		<link rel="stylesheet" href="../../CSS/driver/styles.css" />
+		<link rel="stylesheet" href="../../CSS/driver/account.css" />
+		<script>
+			function toggleEdit() {
+				var displayElements = document.querySelectorAll(".display");
+				var inputElements = document.querySelectorAll(".input");
+
+				displayElements.forEach(function (element) {
+					element.style.display =
+						element.style.display === "none" ? "block" : "none";
+				});
+
+				inputElements.forEach(function (element) {
+					element.style.display =
+						element.style.display === "none" ? "block" : "none";
+				});
+			}
+		</script>
+	</head>
+	<body>
+		<div class="navbar">
+			<a href="message.html">Message</a>
+			<a href="pending_order.html">Pending Order</a>
+			<a href="account.html" style="background-color: #ddd; color: black"
+				>Account</a
+			>
+		</div>
+		<div class="container">
+			<h2>Account Details</h2>
+			<!-- Toggle button -->
+			<button onclick="toggleEdit()">Edit</button>
+			<!-- Account information section -->
+			<div class="account-info">
+				<div class="display"><strong>Username:</strong> b150540215</div>
+				<input
+					type="text"
+					class="input"
+					value="b150540215"
+					style="display: none"
+				/>
+
+				<div class="display"><strong>Name:</strong> Ruiming Chen</div>
+				<input
+					type="text"
+					class="input"
+					value="Ruiming Chen"
+					style="display: none"
+				/>
+
+				<div class="display">
+					<strong>Email:</strong>
+					<a href="mailto:b150540215@gmail.com">b150540215@gmail.com</a>
+				</div>
+				<input
+					type="email"
+					class="input"
+					value="b150540215@gmail.com"
+					style="display: none"
+				/>
+
+				<div class="display">
+					<strong>Phone:</strong> <a href="tel:+12817098525">2817098525</a>
+				</div>
+				<input
+					type="tel"
+					class="input"
+					value="2817098525"
+					style="display: none"
+				/>
+			</div>
+			<button>Reset Password</button>
+		</div>
+	</body>
+</html>

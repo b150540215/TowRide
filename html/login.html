@@ -20,9 +20,9 @@
 		</header>
 		<main>
 			<section class="intro">
-				<div id="loginForm">
+				<div id="loginFormdiv">
 					<h1>Login</h1>
-					<form action="/submit-login" method="post">
+					<form id="loginForm">
 						<div>
 							<label for="uname"><b>Username</b></label>
 							<input
@@ -53,9 +53,9 @@
 				<button id="toggleRegisterForm">Register</button>
 
 				<!-- Registration Form, Initially Hidden -->
-				<div id="registerForm" style="display: none">
+				<div id="registerFormdiv" style="display: none">
 					<h1>Register</h1>
-					<form action="/submit-registration" method="post">
+					<form id="registerForm">
 						<div>
 							<label for="new_uname"><b>New Username</b></label>
 							<input
@@ -90,28 +90,42 @@
 						</div>
 					</form>
 				</div>
+				<div id="verificationFormdiv" style="display: none">
+					<h1>Email Verification</h1>
+					<form id="verificationForm">
+						<div>
+							<label for="verify_email"><b>Email</b></label>
+							<input
+								type="email"
+								placeholder="Enter the email you used for registering"
+								name="verify_email"
+								id="verifyEmailInput"
+								required
+							/>
+						</div>
+
+						<div>
+							<label for="verify_code"><b>Verification Code</b></label>
+							<input
+								type="text"
+								placeholder="Enter verification code sent to your email"
+								name="verify_code"
+								id="verifyCodeInput"
+							/>
+						</div>
+
+						<div id="submitContainer">
+							<button id="verify_email" type="submit">Verify Email</button>
+							<button id="resendButton" type="button">
+								Resend Verification code Email
+							</button>
+						</div>
+					</form>
+				</div>
 			</section>
 		</main>
 		<footer>
 			<p>&copy; 2023 TowRide. All rights reserved.</p>
 		</footer>
-		<script>
-			document
-				.getElementById("toggleRegisterForm")
-				.addEventListener("click", function () {
-					var loginForm = document.getElementById("loginForm");
-					var registerForm = document.getElementById("registerForm");
-
-					if (loginForm.style.display === "none") {
-						loginForm.style.display = "block";
-						registerForm.style.display = "none";
-						this.textContent = "Register"; // Change button text to 'Register'
-					} else {
-						loginForm.style.display = "none";
-						registerForm.style.display = "block";
-						this.textContent = "Login"; // Change button text to 'Login'
-					}
-				});
-		</script>
 	</body>
 </html>

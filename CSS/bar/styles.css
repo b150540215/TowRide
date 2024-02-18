@@ -1,0 +1,45 @@
+body {
+	font-family: Arial, sans-serif;
+	margin: 0;
+	padding: 0;
+	background-color: #f4f4f4;
+}
+.navbar {
+	background-color: #333;
+	overflow: hidden;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+.navbar a {
+	float: left;
+	display: block;
+	color: #f2f2f2;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+}
+.navbar a:hover {
+	background-color: #ddd;
+	color: black;
+}
+.container {
+	padding: 20px;
+	background-color: #fff;
+	text-align: center;
+}
+.chart-container {
+	padding: 15px;
+	background-color: #fff;
+	display: flex;
+	justify-content: center;
+}
+.chart-title {
+	text-align: center;
+	font-size: 1.2em;
+	margin-top: 10px;
+}
+svg {
+	display: block; /* To ensure it is centered in the flex container */
+	margin: auto; /* Center the SVG block in the div */
+}

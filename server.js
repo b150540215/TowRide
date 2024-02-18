@@ -5,6 +5,8 @@ const path = require("path");
 const bcrypt = require("bcryptjs");
 const { Pool } = require("pg");
 const nodemailer = require("nodemailer");
+const multer = require("multer");
+const upload = multer();
 
 const pool = new Pool({
 	connectionString:
@@ -56,7 +58,17 @@ app.post("/submit-login", async (req, res) => {
 
 app.post("/submit-registration", async (req, res) => {
 	const { new_uname, new_psw, new_email } = req.body;
-	const hashedPassword = await bcrypt.hash(new_psw, 10);
+	if (!new_uname || !new_psw || !new_email) {
+		return res.status(400).send("Missing fields in request");
+	}
+
+	var hashedPassword;
+	try {
+		hashedPassword = await bcrypt.hash(new_psw, 10);
+		// ... rest of your code ...
+	} catch (error) {
+		console.log(error);
+	}
 
 	const token = generateVerificationToken();
 	const userEmailAddress = new_email; // User's email address
@@ -87,16 +99,21 @@ app.post("/submit-registration", async (req, res) => {
 	}
 });
 
+//use nodemailer to send verification code to user email
 const transporter = nodemailer.createTransport({
 	service: "gmail",
 	auth: {
 		type: "OAuth2",
 		user: "towridetec@gmail.com",
+
+		//console.cloud.google, project: OAuth2
 		clientId:
 			"115998107263-k2gikspnflophc64rrljul4o99b17a0g.apps.googleusercontent.com",
 		clientSecret: "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",
+
+		//OAuth2.0 Playground, API = GMAIL API v1;
 		refreshToken:
-			"1//04RniMtKrsuocCgYIARAAGAQSNwF-L9Irgqpc1ty8pZ_sRYY-SzzKSNtFT5xLVlJ2dGX2Bp2XLuZSEnGFuWm_sUCGXMwk8CmRGgg",
+			"1//04_AT82PiPIHJCgYIARAAGAQSNwF-L9Irjr--shqMUdx2TM7mibn1diDKY_P859veewUodgF0LH_42h1UH3RCj81_IEReB2PdPkM",
 	},
 });
 

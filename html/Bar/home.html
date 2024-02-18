@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Commission Chart</title>
+		<link rel="stylesheet" href="../../CSS/bar/styles.css" />
+	</head>
+	<body>
+		<div class="navbar">
+			<a
+				href="home.html"
+				style="background-color: rgb(247, 247, 171); color: rgb(0, 0, 0)"
+				>Home</a
+			>
+			<a href="history.html">History</a>
+			<a href="account.html">Account</a>
+		</div>
+		<div class="container">
+			<h1>*Commission Since 12/01/2023: 0.00$</h1>
+			<h1>Total Commission: 0.00$</h1>
+		</div>
+		<div class="chart-container">
+			<!-- Inline SVG for bar chart -->
+			<svg width="100%" height="200">
+				<text
+					x="50%"
+					y="30"
+					text-anchor="middle"
+					style="font-size: 20px; font-weight: bold"
+				>
+					Monthly Commission
+				</text>
+				<!-- Axis -->
+				<line
+					x1="10"
+					y1="180"
+					x2="800"
+					y2="180"
+					style="stroke: black; stroke-width: 2"
+				/>
+				<line
+					x1="10"
+					y1="10"
+					x2="10"
+					y2="180"
+					style="stroke: black; stroke-width: 2"
+				/>
+				<!-- Bars -->
+				<rect x="10" y="180" width="40" height="0" style="fill: blue" />
+				<rect x="70" y="180" width="40" height="0" style="fill: blue" />
+				<rect x="130" y="180" width="40" height="0" style="fill: blue" />
+				<rect x="190" y="180" width="40" height="0" style="fill: blue" />
+				<rect x="250" y="180" width="40" height="0" style="fill: blue" />
+				<rect x="310" y="180" width="40" height="0" style="fill: blue" />
+
+				<!-- Labels -->
+				<text x="30.0" y="195" style="font-size: 10px; text-anchor: middle">
+					Jul 2023
+				</text>
+				<text x="90.0" y="195" style="font-size: 10px; text-anchor: middle">
+					Aug 2023
+				</text>
+				<text x="150.0" y="195" style="font-size: 10px; text-anchor: middle">
+					Sep 2023
+				</text>
+				<text x="210.0" y="195" style="font-size: 10px; text-anchor: middle">
+					Oct 2023
+				</text>
+				<text x="270.0" y="195" style="font-size: 10px; text-anchor: middle">
+					Oct 2023
+				</text>
+				<text x="330.0" y="195" style="font-size: 10px; text-anchor: middle">
+					Nov 2023
+				</text>
+			</svg>
+		</div>
+		<div class="container">
+			<h3>
+				*The commission counts monthly, and will be payed to you at the start of
+				the month. You will get 5% of the customer order total as your
+				commission
+			</h3>
+		</div>
+	</body>
+</html>
