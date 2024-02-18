@@ -7,11 +7,14 @@ const { Pool } = require("pg");
 const nodemailer = require("nodemailer");
 const multer = require("multer");
 const upload = multer();
+require("dotenv").config();
 
+const isProduction = process.env.NODE_ENV === "production";
 const pool = new Pool({
 	connectionString: process.env.DATABASE_URL,
 	ssl: {
-		rejectUnauthorized: false, // This is important for Heroku's free PostgreSQL plan to accept the connection
+		rejectUnauthorized: false, // For Heroku, you may need this to be false if using a free tier PostgreSQL plan
+		// This requires the server's CA certificate. For Heroku and other managed databases, they often provide a valid certificate.
 	},
 });
 
@@ -202,6 +205,7 @@ app.post("/verify-email", upload.none(), async (req, res) => {
 	}
 });
 
-app.listen(3000, function () {
-	console.log("Server is running on port 3000");
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+	console.log(`Server is running on port ${PORT}`);
 });
