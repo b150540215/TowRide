@@ -115,7 +115,7 @@ const transporter = nodemailer.createTransport({
 
 		//OAuth2.0 Playground, API = GMAIL API v1;
 		refreshToken:
-			"1//04_AT82PiPIHJCgYIARAAGAQSNwF-L9Irjr--shqMUdx2TM7mibn1diDKY_P859veewUodgF0LH_42h1UH3RCj81_IEReB2PdPkM",
+			"1//04FmLo1zw9cIrCgYIARAAGAQSNwF-L9IrbKW69lwIZ9gMzBnAzUjBto74GKdBCWSwL8-CvdrwHrRSgYcBn0b2jbW9qvWxPgWz1Io",
 	},
 });
 

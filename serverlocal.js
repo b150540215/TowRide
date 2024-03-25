@@ -7,6 +7,7 @@ const { Pool } = require("pg");
 const nodemailer = require("nodemailer");
 const multer = require("multer");
 const upload = multer();
+const session = require("express-session");
 require("dotenv").config();
 
 const isProduction = process.env.NODE_ENV === "production";
@@ -17,6 +18,15 @@ const pool = new Pool({
 		// This requires the server's CA certificate. For Heroku and other managed databases, they often provide a valid certificate.
 	},
 });
+
+app.use(
+	session({
+		secret: process.env.SECRET, // You should use a long, random string in production
+		resave: false,
+		saveUninitialized: true,
+		cookie: { secure: !true }, // Set to true if using https
+	})
+);
 
 pool.connect((err) => {
 	if (err) {
@@ -50,6 +60,8 @@ app.post("/submit-login", upload.none(), async (req, res) => {
 				userResult.rows[0].password
 			);
 			if (validPassword) {
+				// Set user information in session
+				req.session.userId = userResult.rows[0].id;
 				res.json({ message: "Login successful" });
 			} else {
 				res.json({ message: "Invalid password" });
@@ -60,6 +72,14 @@ app.post("/submit-login", upload.none(), async (req, res) => {
 	} catch (error) {
 		console.error(error);
 		res.status(500).send("Error logging in");
+	}
+});
+
+app.get("/check-login", (req, res) => {
+	if (req.session.userId) {
+		res.json({ loggedIn: true });
+	} else {
+		res.json({ loggedIn: false });
 	}
 });
 
@@ -165,7 +185,8 @@ const transporter = nodemailer.createTransport({
 
 		//OAuth2.0 Playground, API = GMAIL API v1;
 		refreshToken:
-			"1//04_AT82PiPIHJCgYIARAAGAQSNwF-L9Irjr--shqMUdx2TM7mibn1diDKY_P859veewUodgF0LH_42h1UH3RCj81_IEReB2PdPkM",
+			"1//04FmLo1zw9cIrCgYIARAAGAQSNwF-L9IrbKW69lwIZ9gMzBnAzUjBto74GKdBCWSwL8-CvdrwHrRSgYcBn0b2jbW9qvWxPgWz1Io",
+		//accessToken: "ya29.a0AfB_byBA-rDTLhbts0LNK3Wfl0o6w64reHhbhJUdKv_k-lJ5QPSSErtNLleT9Foz2xMnAdV8kA6UtrPV7km0T_-vQL8yQMBHZCoIznTtAhSVQdWcSLE8JFTl3L9gBu0JjkAM7cvp9yYo1kglY4i8epwLS37uhdogkUVuaCgYKAYESARISFQHGX2Mig-pihsXfLnMNmkMhAi5sCA0171",
 	},
 });
 
